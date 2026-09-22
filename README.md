@@ -43,3 +43,5 @@ add the custom domain in Settings → Pages.
 - Colors/type live in the `:root` block at the top of `styles.css`.
 - The Calendly link appears in 4 places (header, hero, services CTA, contact) —
   search for `calendly.com` to update.
+
+<!-- deploy-trigger: kick off Vercel git deployment -->
