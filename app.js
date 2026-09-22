@@ -106,7 +106,7 @@
           return '<article class="row reveal in">' +
             '<span class="row-idx">' + n + "</span>" +
             '<div class="row-main"><h3>' + esc(r.name) + "</h3><p>" + esc(r.description || "No description yet.") + "</p>" +
-            '<p class="row-meta">' + esc(r.language || "code") + " \u00b7 \u2605 " + r.stargazers_count +
+            '<p class="row-meta">' + esc(r.language || "code") +
             " \u00b7 updated " + timeAgo(r.pushed_at) + "</p></div>" +
             '<a class="row-link" href="' + esc(r.html_url) + '" target="_blank" rel="noopener">GitHub &#8599;</a>' +
             "</article>";
