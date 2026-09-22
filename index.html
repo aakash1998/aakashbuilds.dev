@@ -103,6 +103,11 @@
             <span class="row-tag">Data platform</span>
           </article>
         </div>
+
+        <div class="gh-live reveal" id="githubLive">
+          <p class="sec-note gh-live-note"><span class="kicker-blue">Fresh from GitHub</span> &mdash; new repos show up here by themselves.</p>
+          <div class="rows" id="githubRows"></div>
+        </div>
       </div>
     </section>
 
@@ -115,32 +120,7 @@
         </div>
         <p class="sec-note reveal">Short, true stories from production data systems. New ones land on LinkedIn.</p>
 
-        <div class="rows">
-          <article class="row reveal">
-            <span class="row-idx">01</span>
-            <div class="row-main">
-              <h3>&ldquo;A $0.03 discrepancy once took down my entire reconciliation pipeline.&rdquo;</h3>
-              <p>One system rounded up, the other rounded down. Finance does not do &ldquo;close enough.&rdquo; I now have permanent trust issues with decimals.</p>
-            </div>
-            <a class="row-link" href="https://www.linkedin.com/in/aakashpatel05" target="_blank" rel="noopener">LinkedIn &#8599;</a>
-          </article>
-          <article class="row reveal">
-            <span class="row-idx">02</span>
-            <div class="row-main">
-              <h3>&ldquo;The AI agent told me the data was &lsquo;clean enough.&rsquo; It was not clean enough.&rdquo;</h3>
-              <p>40% nulls in a required field. Dates in four formats. Agents optimize for finishing, not for being right — so now a human does the trusting.</p>
-            </div>
-            <a class="row-link" href="https://www.linkedin.com/in/aakashpatel05" target="_blank" rel="noopener">LinkedIn &#8599;</a>
-          </article>
-          <article class="row reveal">
-            <span class="row-idx">03</span>
-            <div class="row-main">
-              <h3>&ldquo;We cut our scraping bill by 73%. The AI agent deserves about 20% of the credit.&rdquo;</h3>
-              <p>$150 a day down to under $40. The savings hid in the boring stuff: caching, dedupe, killing zombie cron jobs. The invoice does not care how clever your agent is.</p>
-            </div>
-            <a class="row-link" href="https://www.linkedin.com/in/aakashpatel05" target="_blank" rel="noopener">LinkedIn &#8599;</a>
-          </article>
-        </div>
+        <div class="rows" id="postsRows"></div>
       </div>
     </section>
 
@@ -201,6 +181,7 @@
             <div class="cv-row"><dt>Education</dt><dd><strong>BEng Computer Engineering</strong><span>Published research in image processing and data mining.</span></dd></div>
           </dl>
         </div>
+        <div id="certsBlock"></div>
       </div>
     </section>
 
