@@ -1,0 +1,39 @@
+---
+import type { CaseStudy } from '../data/site';
+interface Props {
+  study: CaseStudy;
+  /** Alternate editorial layout for visual rhythm between studies. */
+  alt?: boolean;
+}
+const { study, alt = false } = Astro.props;
+---
+<article class:list={['study', alt && 'study--alt']}>
+  <div class="study-grid">
+    <div>
+      <p class="kicker">{study.category}</p>
+      <h3 class="study-title">{study.headline}</h3>
+    </div>
+    <div>
+      <p class="study-lede">{study.description}</p>
+      <dl class="study-points">
+        <div>
+          <dt>Problem</dt>
+          <dd>{study.problem}</dd>
+        </div>
+        <div>
+          <dt>Approach</dt>
+          <dd>{study.approach}</dd>
+        </div>
+        <div>
+          <dt>Outcome</dt>
+          <dd>{study.outcome}</dd>
+        </div>
+      </dl>
+      <p class="study-metric">{study.metric}</p>
+      <p class="study-tech">{study.tech}</p>
+      <a class="tlink" href={'/work/' + study.slug}>
+        Read case study <span class="arr" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</article>
