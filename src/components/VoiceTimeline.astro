@@ -1,0 +1,20 @@
+---
+interface Step { title: string; sub?: string; }
+interface Props {
+  steps: Step[];
+  label: string;
+}
+const { steps, label } = Astro.props;
+const summary = steps.map((s) => s.title).join(' → ');
+---
+<figure class="diagram-frame">
+  <ol class="timeline" aria-label={label + ': ' + summary}>
+    {steps.map((step) => (
+      <li>
+        <div class="tl-title">{step.title}</div>
+        {step.sub && <div class="tl-sub">{step.sub}</div>}
+      </li>
+    ))}
+  </ol>
+  <figcaption class="diagram-cap">{label}</figcaption>
+</figure>
