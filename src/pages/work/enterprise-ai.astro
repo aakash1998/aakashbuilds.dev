@@ -1,0 +1,63 @@
+---
+import Head from '../../components/Head.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { caseStudies } from '../../data/site';
+import '../../styles/global.css';
+
+const study = caseStudies[1];
+const prev = caseStudies[0];
+const next = caseStudies[2];
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <Head
+      title="Trustworthy Enterprise AI — Case Study | Aakash Patel"
+      description="Making a RAG assistant's answers trustworthy: semantic retrieval, re-ranking, and evaluating hallucinations before deployment."
+      path="/work/enterprise-ai"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header base="/" />
+
+    <main id="main">
+      <article class="work-article">
+        <div class="wrap">
+          <a class="tlink back-link" href="/#work"><span aria-hidden="true">←</span> Selected Work</a>
+          <p class="kicker">{study.category}</p>
+          <h1 class="work-h1">{study.headline}</h1>
+          <p class="work-lede">{study.description}</p>
+
+          <section class="work-sec" aria-label="Problem">
+            <h2>Problem</h2>
+            <p>{study.problem}</p>
+          </section>
+
+          <section class="work-sec" aria-label="Approach">
+            <h2>Approach</h2>
+            <p>{study.approach}</p>
+          </section>
+
+          <section class="work-sec" aria-label="Outcome">
+            <h2>Outcome</h2>
+            <p>{study.outcome}</p>
+          </section>
+
+          <div class="work-metric">
+            <p>{study.metric}</p>
+          </div>
+          <p class="work-tech">{study.tech}</p>
+
+          <nav class="work-nav" aria-label="More case studies">
+            <a class="tlink" href={'/work/' + prev.slug}><span aria-hidden="true">←</span> Previous: {prev.category}</a>
+            <a class="tlink" href={'/work/' + next.slug}>Next: {next.category} <span class="arr" aria-hidden="true">→</span></a>
+          </nav>
+        </div>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>
