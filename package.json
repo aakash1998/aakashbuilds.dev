@@ -1,0 +1,1 @@
+{"dependencies":{"astro":"^7.3.5"},"name":"aakashbuilds","private":true,"scripts":{"build":"astro build","dev":"astro dev","preview":"astro preview"},"type":"module","version":"2.0.0"}
