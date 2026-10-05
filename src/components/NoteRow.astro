@@ -1,0 +1,20 @@
+---
+import type { Note } from '../data/site';
+interface Props {
+  note: Note;
+}
+const { note } = Astro.props;
+const external = note.href.startsWith('http');
+---
+<article>
+  <a
+    class="note-row"
+    href={note.href}
+    {...(external ? { target: '_blank', rel: 'noopener' } : {})}
+  >
+    <p class="note-meta">{note.date} · {note.category}</p>
+    <h3 class="note-title">{note.title}</h3>
+    <p class="note-desc">{note.description}</p>
+    <span class="tlink">Read <span class="arr" aria-hidden="true">→</span></span>
+  </a>
+</article>
