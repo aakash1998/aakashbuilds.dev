@@ -1,0 +1,26 @@
+---
+import type { FlowItem } from '../data/site';
+interface Props {
+  items: FlowItem[];
+  label: string;
+  dark?: boolean;
+  compact?: boolean;
+}
+const { items, label, dark = false, compact = false } = Astro.props;
+const cls = ['flow', dark && 'flow--dark', compact && 'flow--compact'].filter(Boolean).join(' ');
+const summary = items.map((i) => i.title).join(' → ');
+---
+<figure class:list={['diagram-frame', dark && 'diagram-frame--dark']}>
+  <ol class={cls} aria-label={label + ': ' + summary}>
+    {items.map((item) => (
+      <li>
+        <div>
+          <div class="flow-title">{item.title}</div>
+          {item.sub && <div class="flow-sub">{item.sub}</div>}
+        </div>
+        {item.note && <div class="flow-note">{item.note}</div>}
+      </li>
+    ))}
+  </ol>
+  <figcaption class="diagram-cap">{label}</figcaption>
+</figure>
