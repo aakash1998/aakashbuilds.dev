@@ -3,28 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
-  <meta name="description" content="" id="metaDescription" />
-  <meta property="og:title" content="" id="ogTitle" />
-  <meta property="og:description" content="" id="ogDescription" />
+  <title>Aakash Patel — Senior Data Engineer</title>
+  <meta name="description" content="Aakash Patel is a Senior Data Engineer in Calgary. He builds production data pipelines and AI systems, and writes about what breaks when AI hits production." />
+  <meta property="og:title" content="Aakash Patel — Senior Data Engineer" />
+  <meta property="og:description" content="I build the data machinery companies run on — and write about what breaks when AI hits production." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/hero-art.webp" />
+  <meta property="og:url" content="https://aakashbuilds.dev/" />
+  <meta property="og:image" content="https://aakashbuilds.dev/assets/headshot.jpg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232B4BF2'/%3E%3Crect x='10' y='26' width='44' height='12' fill='%23000'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=JetBrains Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <header class="site-header" id="siteHeader">
     <div class="wrap header-inner">
-      <a class="brand" href="#top" id="brand">PORTFOLIO<span class="brand-sq" aria-hidden="true"></span></a>
+      <a class="brand" href="#top" id="brand">A. PATEL<span class="brand-sq" aria-hidden="true"></span></a>
       <nav class="main-nav" aria-label="Primary">
-        <a href="#work">Work</a>
         <a href="#writing">Writing</a>
-        <a href="#services">Services</a>
+        <a href="#work">Work</a>
         <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
       <a class="btn btn-solid btn-sm" data-booking href="#" target="_blank" rel="noopener">Book a call</a>
     </div>
@@ -35,16 +36,17 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="kicker reveal" id="heroKicker"></p>
-          <h1 class="reveal" id="heroHeadline"></h1>
-          <p class="hero-sub reveal" id="heroSub"></p>
+          <p class="kicker reveal" id="heroKicker">Senior Data Engineer &middot; Calgary, Canada</p>
+          <h1 class="reveal" id="heroHeadline">Aakash<br />Patel.</h1>
+          <p class="hero-sub reveal" id="heroSub">I build the data machinery companies run on &mdash; pipelines, warehouses, reconciliation jobs &mdash; and write about what breaks when AI hits production.</p>
+          <p class="now-line reveal"><span class="now-dot" aria-hidden="true"></span><span id="nowText"></span></p>
           <div class="hero-ctas reveal">
-            <a class="btn btn-solid" data-booking href="#" target="_blank" rel="noopener">Book a call</a>
-            <a class="btn btn-line" href="#work">See the work</a>
+            <a class="btn btn-solid" href="#writing">Read the writing</a>
+            <a class="btn btn-line" data-booking href="#" target="_blank" rel="noopener">Book a call</a>
           </div>
         </div>
         <figure class="hero-figure reveal">
-          <img src="assets/hero-art.webp" alt="Geometric composition" />
+          <img src="assets/headshot.jpg" alt="Aakash Patel" />
         </figure>
       </div>
       <div class="wrap">
@@ -52,11 +54,22 @@
       </div>
     </section>
 
-    <!-- ============ 01 WORK ============ -->
+    <!-- ============ WRITING ============ -->
+    <section class="section" id="writing">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2>Writing</h2>
+        </div>
+        <p class="sec-note reveal" id="writingNote"></p>
+
+        <div class="rows" id="postsRows"></div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
     <section class="section" id="work">
       <div class="wrap">
         <div class="sec-head reveal">
-          <span class="sec-num">01</span>
           <h2>Work</h2>
         </div>
         <p class="sec-note reveal" id="workNote"></p>
@@ -70,45 +83,10 @@
       </div>
     </section>
 
-    <!-- ============ 02 WRITING ============ -->
-    <section class="section" id="writing">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="sec-num">02</span>
-          <h2>Writing</h2>
-        </div>
-        <p class="sec-note reveal" id="writingNote"></p>
-
-        <div class="rows" id="postsRows"></div>
-      </div>
-    </section>
-
-    <!-- ============ 03 SERVICES ============ -->
-    <section class="section" id="services">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <span class="sec-num">03</span>
-          <h2>Services</h2>
-        </div>
-        <p class="sec-note reveal" id="servicesNote"></p>
-
-        <div class="svc-grid" id="svcGrid"></div>
-
-        <div class="svc-cta reveal">
-          <p class="svc-cta-text" id="svcCtaText"></p>
-          <div class="hero-ctas">
-            <a class="btn btn-solid" data-booking href="#" target="_blank" rel="noopener">Book a free call</a>
-            <a class="btn btn-line" data-email href="#">Email</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 04 ABOUT ============ -->
+    <!-- ============ ABOUT ============ -->
     <section class="section" id="about">
       <div class="wrap">
         <div class="sec-head reveal">
-          <span class="sec-num">04</span>
           <h2>About</h2>
         </div>
         <div class="about-grid">
@@ -125,11 +103,10 @@
       </div>
     </section>
 
-    <!-- ============ 05 CONTACT ============ -->
+    <!-- ============ CONTACT ============ -->
     <section class="section contact" id="contact">
       <div class="wrap">
         <div class="sec-head reveal">
-          <span class="sec-num">05</span>
           <h2>Contact</h2>
         </div>
         <p class="contact-big reveal" id="contactBig"></p>
