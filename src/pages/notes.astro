@@ -1,0 +1,51 @@
+---
+import Head from '../components/Head.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import NoteRow from '../components/NoteRow.astro';
+import { LINKS, notes } from '../data/site';
+import '../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <Head
+      title="Engineering Notes — Aakash Patel"
+      description="Short notes on production data engineering: reconciliation, data quality, reliability, AI evaluation, and what it costs to run systems."
+      path="/notes"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header base="/" />
+
+    <main id="main">
+      <div class="page-intro">
+        <div class="wrap">
+          <h1>Engineering Notes</h1>
+          <p>Short notes on production data engineering: reconciliation, data quality, reliability, AI evaluation, and what it costs to run systems.</p>
+        </div>
+      </div>
+
+      <section class="section" aria-label="All notes" style="padding-top:0;border-top:none">
+        <div class="wrap">
+          <div class="notes-list">
+            {notes.map((note) => (
+              <NoteRow note={note} />
+            ))}
+          </div>
+          <p class="notes-more">
+            <a class="tlink tlink--quiet" href={LINKS.linkedin} target="_blank" rel="noopener">
+              More on LinkedIn <span aria-hidden="true">↗</span>
+            </a>
+          </p>
+          <p style="margin-top:2.5rem">
+            <a class="tlink" href="/"><span aria-hidden="true">←</span> Back home</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
