@@ -2,19 +2,16 @@
 import Head from '../../components/Head.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { caseStudies } from '../../data/site';
+import FlowDiagram from '../../components/FlowDiagram.astro';
+import { ragFlow } from '../../data/site';
 import '../../styles/global.css';
-
-const study = caseStudies[1];
-const prev = caseStudies[0];
-const next = caseStudies[2];
 ---
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <Head
-      title="Trustworthy Enterprise AI — Case Study | Aakash Patel"
-      description="Making a RAG assistant's answers trustworthy: semantic retrieval, re-ranking, and evaluating hallucinations before deployment."
+      title="AI answers are easy. Trust is the engineering problem. — Aakash Patel"
+      description="Making a retrieval-augmented assistant for tax and HR questions trustworthy enough to use: retrieval quality, re-ranking, grounding, and evaluation."
       path="/work/enterprise-ai"
     />
   </head>
@@ -23,36 +20,76 @@ const next = caseStudies[2];
     <Header base="/" />
 
     <main id="main">
-      <article class="work-article">
-        <div class="wrap">
-          <a class="tlink back-link" href="/#work"><span aria-hidden="true">←</span> Selected Work</a>
-          <p class="kicker">{study.category}</p>
-          <h1 class="work-h1">{study.headline}</h1>
-          <p class="work-lede">{study.description}</p>
+      <article>
+        <div class="wrap work-hero">
+          <p class="kicker"><span class="n">02</span> · Case study · Production AI</p>
+          <h1>AI answers are easy. Trust is the engineering problem.</h1>
+          <p class="work-lede">A retrieval-augmented assistant that answers tax and HR questions from real enterprise documents. Building the RAG pipeline was the easy part. The actual work was making the answers trustworthy enough to use.</p>
+        </div>
 
-          <section class="work-sec" aria-label="Problem">
-            <h2>Problem</h2>
-            <p>{study.problem}</p>
-          </section>
-
-          <section class="work-sec" aria-label="Approach">
-            <h2>Approach</h2>
-            <p>{study.approach}</p>
-          </section>
-
-          <section class="work-sec" aria-label="Outcome">
-            <h2>Outcome</h2>
-            <p>{study.outcome}</p>
-          </section>
-
-          <div class="work-metric">
-            <p>{study.metric}</p>
+        <section class="work-section" aria-label="Pull quote">
+          <div class="wrap grid12">
+            <blockquote class="pullquote">A demo that retrieves documents is a weekend project. A system employees can trust with real questions is an engineering problem.</blockquote>
           </div>
-          <p class="work-tech">{study.tech}</p>
+        </section>
 
+        <section class="work-section" aria-label="Context and constraint">
+          <div class="wrap grid12">
+            <div class="work-body">
+              <h2>Context</h2>
+              <p>Enterprise documents are messy, and a wrong answer about tax or HR policy is worse than no answer. A demo that retrieves documents is a weekend project. A system employees can trust with real questions is an engineering problem.</p>
+            </div>
+            <aside class="sidenote">
+              <p>The chat interface is the easy part. Retrieval quality is the product.</p>
+            </aside>
+          </div>
+          <div class="wrap grid12" style="margin-top: 2.5rem">
+            <div class="work-body" style="grid-column: 1 / span 7">
+              <h2>Constraint</h2>
+              <p>The system could not ship on vibes. Retrieval quality and hallucination rates had to be measured and acceptable before anyone depended on it.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="work-section" aria-label="Architecture">
+          <div class="wrap grid12">
+            <div class="work-diagram">
+              <h2>Architecture</h2>
+              <FlowDiagram items={ragFlow} label="RAG pipeline — retrieval before generation" />
+            </div>
+          </div>
+        </section>
+
+        <section class="work-section" aria-label="Decision and result">
+          <div class="wrap grid12">
+            <div class="work-body">
+              <h2>Decision</h2>
+              <p>Semantic search with re-ranking over the document corpus, orchestrated as an explicit pipeline (LangGraph) so every step could be inspected. Before deployment, retrieval quality and hallucination rates were evaluated automatically. The system didn't ship until the numbers justified it.</p>
+              <h2 style="margin-top: 2.5rem">Result</h2>
+              <p>A production assistant grounded in the company's own documents, with measured retrieval quality and evaluated failure modes — deployed because the evaluation supported it, not because the demo looked good.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="work-section" aria-label="Lessons">
+          <div class="wrap grid12">
+            <div style="grid-column: 1 / span 7">
+              <h2>Lessons</h2>
+              <ol class="lessons">
+                <li>Retrieval quality is the product. The chat interface is the easy part.</li>
+                <li>Evaluate before people depend on it, not after.</li>
+                <li>A wrong answer about tax or HR policy is worse than no answer.</li>
+              </ol>
+              <h2 style="margin-top: 2.5rem">Stack</h2>
+              <p class="stack-line">Azure AI Search · Azure OpenAI · Copilot Studio · LangGraph</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="wrap">
           <nav class="work-nav" aria-label="More case studies">
-            <a class="tlink" href={'/work/' + prev.slug}><span aria-hidden="true">←</span> Previous: {prev.category}</a>
-            <a class="tlink" href={'/work/' + next.slug}>Next: {next.category} <span class="arr" aria-hidden="true">→</span></a>
+            <a class="tlink" href="/work/data-platform"><span class="arr" aria-hidden="true">←</span>&nbsp;Previous: Data Platform</a>
+            <a class="tlink" href="/work/voice-ai">Next: Real-time AI <span class="arr" aria-hidden="true">→</span></a>
           </nav>
         </div>
       </article>
