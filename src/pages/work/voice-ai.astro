@@ -2,18 +2,25 @@
 import Head from '../../components/Head.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { caseStudies } from '../../data/site';
+import VoiceTimeline from '../../components/VoiceTimeline.astro';
 import '../../styles/global.css';
 
-const study = caseStudies[2];
-const prev = caseStudies[1];
+const voiceSteps = [
+  { title: 'User speaks', sub: '0 ms' },
+  { title: 'speech recognition' },
+  { title: 'partial transcript' },
+  { title: 'LLM inference' },
+  { title: 'first tokens' },
+  { title: 'speech synthesis' },
+  { title: 'audio response' },
+];
 ---
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <Head
-      title="Real-time Voice AI — Case Study | Aakash Patel"
-      description="Building a conversational voice AI where latency is part of the product: async orchestration over WebSockets."
+      title="In voice systems, latency is product quality. — Aakash Patel"
+      description="A real-time voice AI system where speech recognition, inference and synthesis overlap asynchronously — because every pause makes the product feel broken."
       path="/work/voice-ai"
     />
   </head>
@@ -22,36 +29,74 @@ const prev = caseStudies[1];
     <Header base="/" />
 
     <main id="main">
-      <article class="work-article">
-        <div class="wrap">
-          <a class="tlink back-link" href="/#work"><span aria-hidden="true">←</span> Selected Work</a>
-          <p class="kicker">{study.category}</p>
-          <h1 class="work-h1">{study.headline}</h1>
-          <p class="work-lede">{study.description}</p>
+      <article>
+        <div class="wrap work-hero">
+          <p class="kicker"><span class="n">03</span> · Case study · Real-time AI</p>
+          <h1>In voice systems, latency is product quality.</h1>
+          <p class="work-lede">A conversational voice application: speech recognition, LLM inference, and speech synthesis, orchestrated asynchronously over WebSockets. Built to feel like talking to a person, monitored like infrastructure.</p>
+        </div>
 
-          <section class="work-sec" aria-label="Problem">
-            <h2>Problem</h2>
-            <p>{study.problem}</p>
-          </section>
-
-          <section class="work-sec" aria-label="Approach">
-            <h2>Approach</h2>
-            <p>{study.approach}</p>
-          </section>
-
-          <section class="work-sec" aria-label="Outcome">
-            <h2>Outcome</h2>
-            <p>{study.outcome}</p>
-          </section>
-
-          <div class="work-metric">
-            <p>{study.metric}</p>
+        <section class="work-section" aria-label="Context">
+          <div class="wrap grid12">
+            <div class="work-body">
+              <h2>Context</h2>
+              <p>Three slow operations in sequence — hear, think, speak — with a human waiting on the other end. Run them one after another and the conversation feels broken. The product only works if the whole pipeline fits inside a latency budget a person finds natural.</p>
+            </div>
+            <aside class="sidenote">
+              <p>In a real-time system, a slow stage is a product defect.</p>
+            </aside>
           </div>
-          <p class="work-tech">{study.tech}</p>
+        </section>
 
+        <section class="work-section" aria-label="Architecture">
+          <div class="wrap grid12">
+            <div style="grid-column: 1 / span 12">
+              <h2>Architecture</h2>
+              <VoiceTimeline steps={voiceSteps} label="Voice pipeline — stages overlap instead of waiting" />
+            </div>
+          </div>
+        </section>
+
+        <section class="work-section" aria-label="Decision and result">
+          <div class="wrap grid12">
+            <div class="work-body">
+              <h2>Decision</h2>
+              <p>The pipeline runs asynchronously over WebSockets: recognition, inference, and synthesis overlap instead of waiting on each other. Each stage is monitored like infrastructure — in a real-time system, a slow stage is a product defect.</p>
+            </div>
+            <div class="work-body" style="grid-column: 8 / span 5">
+              <h2>Constraint</h2>
+              <p>No stage could be allowed to stall the conversation, and no latency figure could be assumed — the design had to overlap work and monitor every stage, without inventing targets that didn't exist.</p>
+              <h2 style="margin-top: 2.5rem">Result</h2>
+              <p>A voice system that holds a natural conversation, with latency treated as a feature of the product rather than a number on a dashboard.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="work-section" aria-label="Pull quote">
+          <div class="wrap grid12">
+            <blockquote class="pullquote">Run them one after another and the conversation feels broken.</blockquote>
+          </div>
+        </section>
+
+        <section class="work-section" aria-label="Lessons">
+          <div class="wrap grid12">
+            <div style="grid-column: 1 / span 7">
+              <h2>Lessons</h2>
+              <ol class="lessons">
+                <li>In voice, every unnecessary pause makes the product feel broken.</li>
+                <li>Async overlap is a design decision, not an optimization.</li>
+                <li>Monitor real-time stages like infrastructure, because they are.</li>
+              </ol>
+              <h2 style="margin-top: 2.5rem">Stack</h2>
+              <p class="stack-line">Deepgram · Groq · ElevenLabs · Twilio · FastAPI</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="wrap">
           <nav class="work-nav" aria-label="More case studies">
-            <a class="tlink" href={'/work/' + prev.slug}><span aria-hidden="true">←</span> Previous: {prev.category}</a>
-            <a class="tlink" href="/#work">All selected work <span class="arr" aria-hidden="true">→</span></a>
+            <a class="tlink" href="/work/enterprise-ai"><span class="arr" aria-hidden="true">←</span>&nbsp;Previous: Production AI</a>
+            <a class="tlink" href="/"><span class="arr" aria-hidden="true">←</span>&nbsp;All work</a>
           </nav>
         </div>
       </article>
