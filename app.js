@@ -136,10 +136,14 @@
       if (brand) brand.innerHTML = esc(s.brand || s.name || "") + '<span class="brand-sq" aria-hidden="true"></span>';
 
       var kicker = document.getElementById("heroKicker");
-      if (kicker) kicker.innerHTML = '<span class="kicker-blue">' + esc(s.name || "") + "</span> — " + esc(s.role || "");
+      if (kicker) {
+        if (s.hero_kicker) { kicker.textContent = s.hero_kicker; }
+        else { kicker.innerHTML = '<span class="kicker-blue">' + esc(s.name || "") + "</span> — " + esc(s.role || ""); }
+      }
       var headline = document.getElementById("heroHeadline");
       if (headline) headline.innerHTML = (s.headline_lines || []).map(esc).join("<br />");
       setText("heroSub", s.hero_sub);
+      setText("nowText", s.now);
 
       var strip = document.getElementById("factStrip");
       if (strip) {
