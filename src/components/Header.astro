@@ -1,25 +1,20 @@
 ---
 import { LINKS } from '../data/site';
 interface Props {
-  /** Base path for in-page section anchors ("/" on subpages, "" on home). */
   base?: string;
 }
 const { base = '' } = Astro.props;
 ---
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href={base + '#top'} aria-label="Aakash Patel — back to top">
-      <span class="brand-name">Aakash Patel</span>
-      <span class="brand-sub">Data Engineer</span>
-    </a>
+    <a class="brand" href={base + '#top'} aria-label="Aakash Patel — back to top">Aakash Patel</a>
     <nav class="site-nav" aria-label="Primary">
       <a href={base + '#work'}>Work</a>
       <a href={base + '#notes'}>Notes</a>
       <a href={base + '#about'}>About</a>
     </nav>
     <div class="header-ext">
-      <a class="tlink" href={LINKS.linkedin} target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
-      <a class="tlink" href={'mailto:' + LINKS.email}>Email <span aria-hidden="true">↗</span></a>
+      <a class="tlink" href={LINKS.linkedin} target="_blank" rel="noopener">LinkedIn <span class="arr" aria-hidden="true">↗</span></a>
     </div>
   </div>
 </header>
