@@ -1,0 +1,201 @@
+---
+import Head from '../components/Head.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CaseStudyPreview from '../components/CaseStudyPreview.astro';
+import NoteRow from '../components/NoteRow.astro';
+import { LINKS, notes, caseStudies } from '../data/site';
+import '../styles/global.css';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Aakash Patel',
+  jobTitle: 'Senior Data Engineer',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Calgary',
+    addressCountry: 'CA',
+  },
+  sameAs: [LINKS.linkedin, LINKS.github],
+};
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <Head
+      title="Aakash Patel — Senior Data Engineer, Production Data & AI"
+      description="Aakash Patel is a Senior Data Engineer in Calgary building reliable data platforms and production AI systems. Selected work, engineering notes, experience."
+      path="/"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="top" aria-labelledby="hero-name">
+        <div class="wrap">
+          <h1 class="hero-name" id="hero-name">Aakash Patel</h1>
+          <p class="hero-role">Senior Data Engineer building reliable data platforms and production AI systems.</p>
+          <p class="hero-demo">I design systems for the part that comes after the demo: correctness, observability, recovery, performance, and cost.</p>
+          <ul class="hero-context">
+            <li>Senior Data Engineer · Cuesta Partners</li>
+            <li>Previously Citi and Avenue Living</li>
+            <li>Calgary, Canada</li>
+          </ul>
+          <div class="hero-links">
+            <a class="tlink" href="#work">Selected Work <span class="arr" aria-hidden="true">→</span></a>
+            <a class="tlink" href={LINKS.linkedin} target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a class="tlink" href={'mailto:' + LINKS.email}>Email <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROOF STRIP ============ -->
+      <section class="proof" aria-label="Proof points">
+        <div class="wrap">
+          <div class="proof-grid">
+            <div class="proof-item">
+              <p class="proof-num">4+ yrs</p>
+              <p class="proof-label">Production data engineering</p>
+            </div>
+            <div class="proof-item">
+              <p class="proof-num proof-num--accent">35%</p>
+              <p class="proof-label">Pipeline runtime reduction</p>
+            </div>
+            <div class="proof-item">
+              <p class="proof-num">~20%</p>
+              <p class="proof-label">Compute cost reduction</p>
+            </div>
+            <div class="proof-item">
+              <p class="proof-num">50+</p>
+              <p class="proof-label">Stakeholders served</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SELECTED WORK ============ -->
+      <section class="section" id="work" aria-labelledby="work-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 class="section-title" id="work-title">Selected Work</h2>
+            <p class="section-sub">Production systems. Not demos or tutorial projects.</p>
+          </div>
+          {caseStudies.map((study, i) => (
+            <CaseStudyPreview study={study} alt={i === 1} />
+          ))}
+        </div>
+      </section>
+
+      <!-- ============ ENGINEERING NOTES ============ -->
+      <section class="section" id="notes" aria-labelledby="notes-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 class="section-title" id="notes-title">Engineering Notes</h2>
+          </div>
+          <div class="notes-list">
+            {notes.map((note) => (
+              <NoteRow note={note} />
+            ))}
+          </div>
+          <p class="notes-more">
+            <a class="tlink tlink--quiet" href={LINKS.linkedin} target="_blank" rel="noopener">
+              More on LinkedIn <span aria-hidden="true">↗</span>
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ EXPERIENCE ============ -->
+      <section class="section" id="experience" aria-labelledby="xp-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 class="section-title" id="xp-title">Experience</h2>
+          </div>
+          <ul class="xp-list">
+            <li class="xp-row">
+              <span class="xp-date">2026 — now</span>
+              <span><span class="xp-co">Cuesta Partners</span><br /><span class="xp-role">Senior Data Engineer</span></span>
+            </li>
+            <li class="xp-row">
+              <span class="xp-date">2025 — 2026</span>
+              <span><span class="xp-co">Avenue Living</span><br /><span class="xp-role">Data Engineer</span></span>
+            </li>
+            <li class="xp-row">
+              <span class="xp-date">2022 — 2025</span>
+              <span><span class="xp-co">Citi</span><br /><span class="xp-role">Data Engineer</span></span>
+            </li>
+          </ul>
+          <h3 class="edu-title">Education</h3>
+          <ul class="edu-list">
+            <li><strong>MSc Big Data Analytics</strong> <span>— Trent University</span></li>
+            <li><strong>BEng Computer Engineering</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ ABOUT ============ -->
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 class="section-title" id="about-title">About</h2>
+          </div>
+          <div class="about-grid">
+            <div class="about-copy">
+              <p>I&rsquo;m interested in the unglamorous parts of engineering: reconciliation, failure recovery, schema changes, observability, cost, and the awkward edge cases that only appear once people depend on a system.</p>
+              <p>AI has made software dramatically faster to build. It hasn&rsquo;t made production engineering less demanding &mdash; if anything, when creating systems gets easier, judgment about how they run matters more. Someone still has to decide what &ldquo;correct&rdquo; means, what happens when it breaks, and what it costs to keep running.</p>
+              <p>I&rsquo;m a Senior Data Engineer based in Calgary. I&rsquo;ve built data platforms across financial services, real estate, and consulting engagements, and production AI systems people rely on for real decisions. I do that now at Cuesta Partners.</p>
+            </div>
+            <figure class="about-photo">
+              <img
+                src="/images/headshot.jpg"
+                alt="Aakash Patel"
+                width="800"
+                height="1067"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="wrap">
+          <h2 class="contact-title" id="contact-title">Let&rsquo;s build something worth operating.</h2>
+          <p class="contact-body">I&rsquo;m interested in difficult data problems, production AI systems, and engineering work where reliability actually matters.</p>
+          <ul class="contact-links">
+            <li>
+              <a href={'mailto:' + LINKS.email}>
+                <span>{LINKS.email}</span>
+                <span class="ext" aria-hidden="true">→</span>
+              </a>
+            </li>
+            <li>
+              <a href={LINKS.linkedin} target="_blank" rel="noopener">
+                <span>LinkedIn</span>
+                <span class="ext" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href={LINKS.github} target="_blank" rel="noopener">
+                <span>GitHub</span>
+                <span class="ext" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li><span class="plain"><span>Calgary, Canada</span></span></li>
+          </ul>
+          <p class="contact-quiet">
+            Prefer to talk live? <a class="tlink tlink--quiet" href={LINKS.calendly} target="_blank" rel="noopener">Grab 15 minutes.</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
