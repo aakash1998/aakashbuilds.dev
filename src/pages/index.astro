@@ -3,6 +3,7 @@ import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FlowDiagram from '../components/FlowDiagram.astro';
+import AiUsage from '../components/AiUsage.astro';
 import VoiceTimeline from '../components/VoiceTimeline.astro';
 import { LINKS, notes, heroFlow, platformFlow, ragFlow } from '../data/site';
 import '../styles/global.css';
@@ -113,6 +114,8 @@ const voiceSteps = [
           </div>
         </div>
       </section>
+
+      <AiUsage />
 
       <!-- ============ ENGINEERING NOTES ============ -->
       <section class="section notes-section" id="notes" aria-labelledby="notes-title">
